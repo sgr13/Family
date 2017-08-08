@@ -13,6 +13,11 @@ use Doctrine\ORM\Mapping as ORM;
 class Child
 {
     /**
+     * @ORM\ManyToOne(targetEntity="Family", inversedBy="Child")
+     */
+    private $family;
+
+    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -91,4 +96,21 @@ class Child
     {
         return $this->birthDate;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getFamily()
+    {
+        return $this->family;
+    }
+
+    /**
+     * @param mixed $family
+     */
+    public function setFamily($family)
+    {
+        $this->family = $family;
+    }
+
 }

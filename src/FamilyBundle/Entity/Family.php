@@ -13,6 +13,21 @@ use Doctrine\ORM\Mapping as ORM;
 class Family
 {
     /**
+     * @ORM\OneToOne(targetEntity="Mother", mappedBy="Family")
+     */
+    private $father;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Father", mappedBy="Family")
+     */
+    private $mother;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Child", mappedBy="Family")
+     */
+    private $child;
+
+    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -61,4 +76,53 @@ class Family
     {
         return $this->name;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getFather()
+    {
+        return $this->father;
+    }
+
+    /**
+     * @param mixed $father
+     */
+    public function setFather($father)
+    {
+        $this->father = $father;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMother()
+    {
+        return $this->mother;
+    }
+
+    /**
+     * @param mixed $mother
+     */
+    public function setMother($mother)
+    {
+        $this->mother = $mother;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getChild()
+    {
+        return $this->child;
+    }
+
+    /**
+     * @param mixed $child
+     */
+    public function setChild($child)
+    {
+        $this->child = $child;
+    }
+
 }
